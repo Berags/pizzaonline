@@ -11,28 +11,28 @@
     </div>
     <div class="flex flex-wrap">
         <?php 
-            include_once "./classes/DBManager.php";
-            include_once "./resolvers/pietanze.php";
-            $menu = PietanzeResolver::GetMenu(); 
-        ?>
-        <?php foreach($menu as $pietanza) { ?>
+        include_once "./classes/DBManager.php";
+        include_once "./resolvers/pietanze.php";
+        $menu = PietanzeResolver::GetMenu(); 
+        
+        foreach($menu as $pietanza) { ?>
             <div class="flex flex-1 p-6 mt-10">
                 <div class="bg-white w-full flex p-1 items-center object-cover rounded-lg shadow-2xl">
                     <div class="flex-none w-44 h-44 relative">
                         <img src="./static/images/menu/<?php echo $pietanza["imgpath"]; ?>" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
                     </div>
                     <div class="flex-auto pl-6">
-                            <h1 class="w-full flex-none font-semibold mb-2.5 text-purple-900 h-12 overflow-y-auto text-lg">
-                                <a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>"><?php echo $pietanza["nome"]; ?></a>
-                            </h1>
-                            <div class="leading-7 font-bold h-4 mt-2 mb-3">
-                                €<?php echo $pietanza["prezzo"]; ?>
-                            </div>
+                        <h1 class="w-full flex-none font-semibold mb-2.5 text-purple-900 h-12 overflow-y-auto text-lg">
+                            <a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>"><?php echo $pietanza["nome"]; ?></a>
+                        </h1>
+                        <div class="leading-7 font-bold h-4 mt-2 mb-3">
+                            €<?php echo $pietanza["prezzo"]; ?>
+                        </div>
                         <div class="flex items-baseline h-16 overflow-y-auto">
                             <?php echo $pietanza["descrizione"]; ?>
                         </div>
                         <div class="flex space-x-3 text-sm font-semibold self-end overflow-y-auto">
-                            <button type="button" data-bs-toggle="tooltip" data-bs-placement="right" title="Aggiungi al carrello">
+                            <button type="button" data-bs-toggle="tooltip" data-bs-placement="right" title="Aggiungi al carrello" onclick="aggiungiElementoAlCarrello(<?php echo $pietanza['id_pietanza']; ?>, 1, '<?php echo $pietanza['nome']; ?>', '<?php echo $pietanza['imgpath']; ?>', <?php echo $pietanza['prezzo']; ?>)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                     <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
                                     <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>

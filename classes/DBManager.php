@@ -46,8 +46,12 @@ class DBManager
 	    return $res;
     }
 
-    function set_dbname($dbname) {
-        $this->dbname = $dbname;
+    static function setDatabaseName($dbname) {
+        self::$dbname = $dbname;
+    }
+
+    static function getConnection() {
+        return mysqli_connect(self::$host, self::$username, self::$password, self::$dbname); 
     }
 }
 ?>
