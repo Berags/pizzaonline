@@ -9,14 +9,14 @@
     <div class="flex justify-center">
         <h1 class="text-6xl text-white mt-12">MENÙ</h1>
     </div>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap flex-auto">
         <?php 
         include_once "./classes/DBManager.php";
         include_once "./resolvers/pietanze.php";
         $menu = PietanzeResolver::GetMenu(); 
         
         foreach($menu as $pietanza) { ?>
-            <div class="flex flex-1 p-6 mt-10">
+            <div class="p-6 mt-10 sm:w-full md:w-1/2 lg:w-1/3">
                 <div class="bg-white w-full flex p-1 items-center object-cover rounded-lg shadow-2xl">
                     <div class="flex-none w-44 h-44 relative">
                         <img src="./static/images/menu/<?php echo $pietanza["imgpath"]; ?>" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" />

@@ -1,12 +1,9 @@
 <?php include_once "./components/heading.php"; ?>
 <body>
   <?php include_once "./components/sidebar.php"; ?>
-  <!-- component -->
   <div class="container mx-auto px-5 bg-white">
     <div class="flex lg:flex-row flex-col-reverse shadow-lg">
-      <!-- left section -->
       <div class="w-full lg:w-3/5 min-h-screen shadow-lg">
-        <!-- header -->
         <div class="flex flex-row justify-between items-center px-5 mt-5">
           <div class="text-gray-800">
             <div class="font-bold text-xl">Pizzeria "I Tre Porcellini"</div>
@@ -19,9 +16,7 @@
           </span>
         </div>
       </div>
-      <!-- end header -->
-      <!-- products -->
-      <div class="grid grid-cols-3 gap-4 px-5 mt-5 overflow-y-auto h-3/4">
+      <div class="grid grid-cols-3 gap-2 px-5 mt-5 overflow-y-auto h-1/2">
         <script>
           const aggiungiCarrelloDaCarrello = (id, quantita, nome, imgpath, prezzo) => {
             aggiungiElementoAlCarrello(id, quantita, nome, imgpath, prezzo);
@@ -53,55 +48,36 @@
         </div>
       <?php } ?>
     </div>
-    <!-- end products -->
   </div>
-  <!-- end left section -->
-  <!-- right section -->
   <div class="w-full lg:w-2/5">
-    <!-- header -->
     <div class="flex flex-row items-center justify-between px-5 mt-5">
       <div class="font-bold text-xl">Ordine corrente</div>
       <div class="font-semibold">
         <span class="px-4 py-2 rounded-md bg-red-100 text-red-500" onclick="eliminaCarrello()">Svuota carrello</span>
       </div>
     </div>
-    <!-- end header -->
-    <!-- order list -->
-    <form class="px-5 py-4 mt-5 overflow-y-auto h-64" id="ordini">    
+    <form action="post_ordine.php" method="POST" class="px-5 py-4 mt-5 overflow-y-auto h-64" id="ordini">    
     </form>
-    <!-- end order list -->
-    <!-- totalItems -->
     <div class="px-5 mt-5">
       <div class="py-2 rounded-md shadow-lg">
         <div class="mt-3 pb-2 px-4 flex items-center justify-between">
           <span class="font-semibold text-2xl">Totale</span>
-          <span class="font-bold text-2xl" id="totale"></span>
+          <span class="font-bold text-2xl" id="totale">€0.00</span>
         </div>
       </div>
     </div>
-    <!-- end total -->
-    <!-- cash -->
     <div class="px-5 mt-5">
-      <script>
-        console.table(ottieniCarrello());
-      </script>
-      <form action="" method="POST">
-      </form>
-    </div>
-    <!-- end cash -->
-    <!-- button pay-->
-    <div class="px-5 mt-5">
-      <div class="px-4 py-4 rounded-md shadow-lg text-center bg-purple-700 text-white font-semibold">
+      <div class="px-4 py-4 rounded-md shadow-lg text-center bg-purple-700 text-white font-semibold"onclick="controllaInvio()">
         Ordina
       </div>
     </div>
-    <!-- end button pay -->
   </div>
-  <!-- end right section -->
 </div>
 </div>
 <script>
-  componiTabella(ottieniCarrello())
+  $(document).ready(() => {
+    componiTabella(ottieniCarrello())
+  });
 </script>
 </body>
 </html>

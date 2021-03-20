@@ -49,11 +49,10 @@ const controllaDescrizione = () => {
 const controllaTipo = () => {};
 
 const nuovoIngrediente = () => {
-  window.open("./inserimento_ingredienti", "", "width=600,height=600");
+  window.open("./inserimento_ingredienti.php", "", "width=600,height=600");
 };
 
 const aggiungiIngrediente = () => {
-  $("#inserimento_ingredienti").append(
-    '<input list="ingredienti" name="ingredienti[]" class="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2 mt-2"></input>'
-  );
+  $("#select-ingredienti").clone().appendTo("#inserimento_ingredienti");
+  return;
 };

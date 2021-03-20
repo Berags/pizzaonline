@@ -30,7 +30,7 @@
       <hr class="w-16 border-gray-300 hidden sm:block">
     </div>
     <div class="col-start-1 row-start-3 space-y-3 px-4">
-      <button type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 border-b-4 border-purple-600 rounded-md bg-purple-500 hover:bg-purple-400">Ordina</button>
+      <a href="./carrello" class="focus:outline-none text-white text-sm py-2.5 px-5 border-b-4 border-purple-600 rounded-md bg-purple-500 hover:bg-purple-400">Ordina</a>
     </div>
     <div class="col-start-1 row-start-1 flex sm:col-start-2 sm:row-span-3">
       <div class="w-full grid grid-cols-3 grid-rows-2 gap-2">
