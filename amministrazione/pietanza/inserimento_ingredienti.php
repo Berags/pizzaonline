@@ -10,12 +10,12 @@
 	<link rel="stylesheet" href="../static/css/menu.css">
 	<link rel="shortcut icon" href="../images/logo.ico" type="image/x-icon">
 	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-	<script src="../static/js/jquery.js"></script>
+	<script src="../../static/js/jquery.js"></script>
 </head>
 <body>
     <div class="flex inline-block justify-center mt-10">
         <div class="w-full max-w-md">
-            <form class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4" method='POST' action='post/post_inserimento_ingrediente.php' id="ingrediente" enctype="multipart/form-data">
+            <form class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4" method='POST' action='../post/post_inserimento_ingrediente.php' id="ingrediente" enctype="multipart/form-data">
                 <div
                 class="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4"
                 >

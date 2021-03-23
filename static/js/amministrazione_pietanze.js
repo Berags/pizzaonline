@@ -3,7 +3,7 @@ $(document).ready(() => {
   dataTable = $("#dataTable").DataTable({
     order: [[0, "desc"]],
     ajax: {
-      url: "../api/pietanze",
+      url: "../../api/pietanze",
       type: "GET",
       datatype: "json",
       dataSrc: "",
