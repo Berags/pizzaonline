@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amministrazione - I tre porcellini</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.css"/>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <?php 
+    /* Jacopo Beragnoli 5°IC */
+    session_start();
+    if(!isset($_SESSION["username"])) {
+      header("location: ../");
+  }
+  ?>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amministrazione - I tre porcellini</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.css"/>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
     <!-- SIDEBAR -->
@@ -47,10 +54,10 @@
                 <span class="ml-2">GESTIONE ORDINI</span>
             </label>
             <br />
-            <a class="btn btn-success form-control text-white col-4" asp-page="/ReportView/Index">Giornalieri</a>
-            <a class="btn btn-success form-control text-white col-4" asp-page="/ReportView/ServizioSingolo">Mensili</a>
+            <a class="btn btn-success form-control text-white col-4" href="../ordine/lista?tipo=giornaliero">Giornalieri</a>
+            <a class="btn btn-success form-control text-white col-4" href="../ordine/lista?tipo=mensile">Mensili</a>
             <p class="mt-2"></p>
-            <a class="btn btn-success form-control text-white col-4" asp-page="/ReportView/ServiziDate">Clienti</a>
+            <a class="btn btn-success form-control text-white col-4" href="../cliente/lista">Clienti</a>
             <p class="mb-4"></p>
         </div>
     </div>

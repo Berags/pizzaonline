@@ -1,11 +1,17 @@
 <?php 
+/* Jacopo Beragnoli 5°IC */
+session_start();
+if(!isset($_SESSION["username"])) {
+  header("location: ../");
+}
+?><?php 
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/ordini.php";
 if(!isset($_GET["id"])) {
     // Se non è presente il parametro ID nella richiesta di GET
     // Si ritorna alla pagina delle pietanze
-    header("location: ./lista");
-    die();
+  header("location: ./lista");
+  die();
 } 
 $ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::getConnection(), $_GET["id"]))[0];
 ?>
@@ -16,8 +22,8 @@ $ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::get
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riepilogo - I Tre Porcellini</title>
-	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
 </head>
 <body>
  <a onclick="mostraSidebar()">
@@ -35,44 +41,47 @@ $ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::get
   </nav>
 </div>
 <div class="p-6 pl-6">
-    <div class="flex flex-wrap items-baseline">
-      <h1 class="w-full flex-none font-semibold mb-2.5">
-        Ordine numero: <?php echo $ordine["id_ordine"]; ?>
-      </h1>
-      <div class="text-sm font-medium text-gray-400 mr-3">
-        Totale: 
-      </div>
-      <div class="text-4xl leading-7 font-bold text-purple-600">
-        <?php echo number_format(floatval($ordine["prezzo_tot"]), 2); ?>
-      </div>
+  <div class="flex flex-wrap items-baseline">
+    <h1 class="w-full flex-none font-semibold mb-2.5">
+      Ordine numero: <?php echo $ordine["id_ordine"]; ?>
+    </h1>
+    <div class="text-sm font-medium text-gray-400 mr-3">
+      Totale: 
     </div>
-    <div class="flex items-baseline my-8">
-        Data e ora ordinazione: <?php echo date_format(date_create($ordine["data_ora"]), "d/m/Y H:i"); ?> 
-        <br>
-        Indirizzo spedizione: <?php echo $ordine["via"] . " " . $ordine["civico"] . ", " . $ordine["citta"]; ?> 
-        <br>
-        <div class="flex ml-4"> 
-          Cliente Numero: 
-          <a class="flex items-center text-blue-500" href="../cliente/riepilogo?id_cliente=<?php echo $ordine["id_cliente"]; ?>">&nbsp;<?php echo $ordine["id_cliente"]; ?> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square ml-2" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
-            </svg>
-          </a>
-        </div>
+    <div class="text-4xl leading-7 font-bold text-purple-600">
+      <?php echo number_format(floatval($ordine["prezzo_tot"]), 2); ?>
     </div>
-    <div>
-        <?php 
-            /* Jacopo Beragnoli 5°IC */
-            $pietanze = OrdiniResolver::GetPietanzeByOrdine($ordine["id_ordine"]);
-            if(!empty($pietanze)) {
-                foreach($pietanze as $pietanza) {
-                    echo $pietanza["quantita"] . " x " .$pietanza["nome"];
-                    echo "<br>";
-                }
-            }
-        ?>
-    </div>
+  </div>
+  <div class="flex items-baseline my-8">
+    Data e ora ordinazione: <?php echo date_format(date_create($ordine["data_ora"]), "d/m/Y H:i"); ?> 
+    <br>
+    Indirizzo spedizione: <?php echo $ordine["via"] . " " . $ordine["civico"] . ", " . $ordine["citta"]; ?> 
+    <br>
+    <div class="flex ml-4"> 
+      Cliente Numero: 
+      <a class="flex items-center text-blue-500" href="../cliente/riepilogo?id_cliente=<?php echo $ordine["id_cliente"]; ?>">&nbsp;<?php echo $ordine["id_cliente"]; ?> 
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square ml-2" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+      </svg>
+    </a>
+  </div>
 </div>
+<div class="ml-4">
+  <ul style="list-style-type:disc">
+    <?php 
+    /* Jacopo Beragnoli 5°IC */
+    $pietanze = OrdiniResolver::GetPietanzeByOrdine($ordine["id_ordine"]);
+    if(!empty($pietanze)) {
+      foreach($pietanze as $pietanza) {
+        echo "<li>" . $pietanza["quantita"] . " x " .$pietanza["nome"];
+        echo "</li>";
+      }
+    }
+    ?>
+  </ul>
+</div>
+</div>
+<a href="../" class="ml-6 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100">Indietro</a>
 <script src="../../static/js/jquery.js"></script>
 <script>
   $("#sidebar").hide();

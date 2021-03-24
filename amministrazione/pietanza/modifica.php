@@ -1,4 +1,11 @@
 <?php 
+/* Jacopo Beragnoli 5°IC */
+session_start();
+if(!isset($_SESSION["username"])) {
+  header("location: ../");
+}
+?>
+<?php 
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/pietanze.php";
 include_once "../../resolvers/ingredienti.php";
@@ -106,7 +113,7 @@ if(!isset($_GET["id"])) {
                                                 </select>
                                             <?php } 
                                         }else { ?>
-                                         <select name="ingredienti[]" class="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2" id="select-ingredienti">
+                                           <select name="ingredienti[]" class="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2" id="select-ingredienti">
                                             <option>--- Seleziona un ingrediente ---</option>
                                             <?php 
                                             $ingredienti = DBManager::query("SELECT * FROM ingrediente");
