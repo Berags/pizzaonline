@@ -4,26 +4,22 @@ session_start();
 if(!isset($_SESSION["username"])) {
   header("location: ../");
 }
-?>
-<?php
-/* Jacopo Beragnoli 5°IC */
+
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/pietanze.php";
 include_once "../../resolvers/ingredienti.php";
 $dbLink       = DBManager::getConnection();
-$id = $post["id_pietanza"];
+$id           = $_POST["id_pietanza"];
 $nomePietanza = mysqli_real_escape_string($dbLink, $_POST["nome_pietanza"]);
 $descrizione  = mysqli_real_escape_string($dbLink, $_POST["descrizione"]);
 $prezzo       = floatval($_POST["prezzo"]);
 $tipo         = mysqli_real_escape_string($dbLink, $_POST["tipo"]);
 $ingredienti  = $_POST["ingredienti"];
-
-
-
+print_r($ingredienti);
 // Rimuoviamo gli elementi doppi negli ingredienti
 $ingredienti = array_filter($ingredienti);
 $ingredienti = array_unique($ingredienti);
-
+print_r($ingredienti);
 // Controlliamo se sono presenti gli ingredienti inseriti dall'utente nel database
 $nomeIngredientiDatabase = IngredientiResolver::GetNomeIngredienti();
 foreach($ingredienti as $ingrediente) {
@@ -34,31 +30,20 @@ foreach($ingredienti as $ingrediente) {
 }
 
 $immagine = uploadFile();
+if($immagine == "") {
+  $immagine = PietanzeResolver::GetImmaginePietanza($id)["imgpath"];
+}
 PietanzeResolver::ModificaPietanza($id, $nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
-$id_pietanza = PietanzeResolver::GetId($nomePietanza);
-IngredientiResolver::InserisciIngredientiPietanza($ingredienti, $id_pietanza);
-header("location: ../pietanze");
-/*
-TODO:
-- Inserimento pietanza
-- Ottenimento id della pietanza
-- refactoring
-- commenti
-*/
-
-
-/* function checkType() { //Per fare l'effettivo controllo prima bisogna vedere come si vogliono inserire gli ingredienti
-$ingredienti_senza_glutine = DBManager::query("SELECT nome FROM ingrediente WHERE senza_glutine=true AND nome=".$ingrediente["nome"]);
-//controllo ingredienti per celiaci
-if($ingredienti_senza_glutine == NULL){
-echo "Non ci sono ingredienti per celiaci";
-}
-}
-*/
+IngredientiResolver::EliminaIngredientiPietanza($id);
+IngredientiResolver::InserisciIngredientiPietanza($ingredienti, $id);
+header("location: ../pietanza/lista");
 
 function uploadFile() {
   $target_dir = "../../static/images/menu/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+  if(empty(basename($_FILES["fileToUpload"]["name"]))) {
+    return "";
+  }
   $uploadOk = 1;
   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   // Check if image file is a actual image or fake image
@@ -107,6 +92,4 @@ function uploadFile() {
     }
   }
 }
-?>
-
 ?>

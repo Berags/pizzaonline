@@ -1,12 +1,8 @@
 <?php
-/* Jacopo Beragnoli 5°IC */
 session_start();
 if(!isset($_SESSION["username"])) {
 	header("location: ../");
 }
-?>
-<?php
-/* Jacopo Beragnoli 5°IC */
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/ingredienti.php";
 $dbLink       = DBManager::getConnection();

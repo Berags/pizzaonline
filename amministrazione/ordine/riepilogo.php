@@ -24,6 +24,7 @@ $ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::get
   <title>Riepilogo - I Tre Porcellini</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="icon" href="../../static/images/logo.ico">
 </head>
 <body>
   <a onclick="mostraSidebar()">

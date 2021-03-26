@@ -36,40 +36,40 @@ const aggiungiElementoAlCarrello = (id, quantita, nome, imgpath, prezzo) => {
 
 const componiTabella = (carrello) => {
   carrello
-    .filter((el) => {
-      if (el === null) return false;
-      return true;
-    })
-    .map((element, index) => {
-      totale += element.prezzo * element.quantita;
-      // Creazione dell'elemento
-      const row = `
-		<div class="flex flex-row justify-between items-center mb-4" id="${index}">
-		<div class="flex flex-row items-center w-2/5">
-		<img src="./static/images/menu/${
+  .filter((el) => {
+    if (el === null) return false;
+    return true;
+  })
+  .map((element, index) => {
+    totale += element.prezzo * element.quantita;
+    // Creazione dell'elemento
+    const row = `
+    <div class="flex flex-row justify-between items-center mb-4" id="${index}">
+    <div class="flex flex-row items-center w-2/5">
+    <img src="./static/images/menu/${
       element.imgpath
     }" class="w-10 h-10 object-cover rounded-md" alt="">
-		<span class="ml-4 font-semibold text-sm">${element.nome}</span>
-		</div>
-		<div class="w-32 flex justify-between">
-		<input type="hidden" value="${element.id}" name="id[]">
-		<span class="px-3 py-1 rounded-md bg-gray-300" onclick="rimuoviDaCarrello(${index}, ${
-        element.prezzo
-      })">-</span>
-		<input id="input-${index}" name="quantita[]" readonly class="font-semibold mx-4 w-2" value="${
-        element.quantita
-      }">
-		<span class="px-3 py-1 rounded-md bg-gray-300" onclick="aggiungiDaCarrello(${index}, ${
-        element.prezzo
-      })">+</span>
-		</div>
-		<div class="font-semibold text-lg w-16 text-center">
-		${element.quantita * element.prezzo}
-		</div>
-		</div>
-		`;
-      $("#ordini").append(row);
-    });
+    <span class="ml-4 font-semibold text-sm">${element.nome}</span>
+    </div>
+    <div class="w-32 flex justify-between">
+    <input type="hidden" value="${element.id}" name="id[]">
+    <span class="px-3 py-1 rounded-md bg-gray-300 cursor-pointer" onclick="rimuoviDaCarrello(${index}, ${
+      element.prezzo
+    })">-</span>
+    <input id="input-${index}" name="quantita[]" readonly class="font-semibold mx-4 w-2" value="${
+      element.quantita
+    }">
+    <span class="px-3 py-1 rounded-md bg-gray-300 cursor-pointer" onclick="aggiungiDaCarrello(${index}, ${
+      element.prezzo
+    })">+</span>
+    </div>
+    <div class="font-semibold text-lg w-16 text-center">
+    ${element.quantita * element.prezzo}
+    </div>
+    </div>
+    `;
+    $("#ordini").append(row);
+  });
   console.log(totale);
   $("#totale").html("€" + totale);
 };

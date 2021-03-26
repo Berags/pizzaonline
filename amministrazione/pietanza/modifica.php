@@ -22,12 +22,12 @@ if(!isset($_GET["id"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>I tre porcellini - Creazione</title>
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/menu.css">
-  <link rel="shortcut icon" href="../images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../static/css/menu.css">
+  <link rel="icon" href="../../static/images/logo.ico">
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-  <script src="../static/js/jquery.js"></script>
+  <script src="../../static/js/jquery.js"></script>
 </head>
 <body>
   <a onclick="mostraSidebar()">
@@ -44,7 +44,11 @@ if(!isset($_GET["id"])) {
       <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="../../login">Login</a>
     </nav>
   </div>
-  <form method='POST' action='../post/post_modifica_pietanze.php' id="pietanza" enctype="multipart/form-data">
+  <form method='POST' action='../post/post_modifica.php' id="pietanza" enctype="multipart/form-data">
+    <?php
+    $pietanza = PietanzeResolver::GetPizzaById($_GET["id"]);
+    ?>
+    <input type="hidden" name="id_pietanza" value="<?php echo $pietanza[0]['id_pietanza']; ?>">
     <div class="min-h-screen py-1 flex flex-col justify-center sm:py-12">
       <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
@@ -52,7 +56,6 @@ if(!isset($_GET["id"])) {
             <div class="flex items-center space-x-5">
               <div class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">
                 <?php
-                $pietanza = PietanzeResolver::GetPizzaById($_GET["id"]);
                 echo $pietanza[0]["id_pietanza"];
                 ?>
               </div>
@@ -128,7 +131,7 @@ if(!isset($_GET["id"])) {
 
                 </div>
                 <div>
-                  <img src="../static/images/menu/<?php echo $pietanza[0]["imgpath"];?>">
+                  <img src="../../static/images/menu/<?php echo $pietanza[0]["imgpath"];?>">
                 </div>
               </div>
               Seleziona una nuova immagine
@@ -145,7 +148,7 @@ if(!isset($_GET["id"])) {
       </div>
     </div>
   </form>
-  <script src="../static/js/inserimento.js"></script>
+  <script src="../../static/js/inserimento.js"></script>
   <script>
   $("#sidebar").hide();
   var visibile = false;

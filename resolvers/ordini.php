@@ -17,7 +17,7 @@ class OrdiniResolver {
 		return DBManager::query("SELECT * FROM `ordine` WHERE id_ordine=$id");
 	}
 
-	static function GetPietanzeByOrdine($id) {
+	static function GetPietanzeByOrdine(int $id) {
 		return DBManager::query("SELECT * FROM `contiene` c NATURAL JOIN `pietanza` p WHERE id_ordine=$id");
 	}
 

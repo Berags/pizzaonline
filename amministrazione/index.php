@@ -13,6 +13,7 @@
 	<title>Amministrazione - I Tre Porcellini</title>
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+	<link rel="icon" href="../static/images/logo.ico">
 </head>
 <body>
 	<style>
@@ -35,7 +36,7 @@
 		</nav>
 	</div>
 	<div>
-		<div class="bannerFondo bg-purple-800 bg-left-top bg-auto bg-repeat-x" style="background-image: url(./img/continuartl_4.png)">
+		<div class="bannerFondo bg-purple-800 bg-left-top bg-auto bg-repeat-x">
 		</div>
 		<div class="-mt-64 ">
 			<div class="w-full text-center">

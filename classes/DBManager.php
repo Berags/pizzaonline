@@ -23,7 +23,7 @@ class DBManager
       die("Connessione fallita: ". mysqli_connect_error());
     }
 
-    // Eseguiamo la queri e la salviamo in una variabile
+    // Eseguiamo la query e la salviamo in una variabile
     $risultato = @mysqli_query($con, $q);
 
     // La ricerca da risultati?
@@ -40,6 +40,7 @@ class DBManager
       $res[] = $row;
     }
 
+    mysqli_close($con);
     return $res;
   }
 
@@ -66,6 +67,7 @@ class DBManager
       //Nessun risultato --> die();
     }
 
+    mysqli_close($con);
     return mysqli_insert_id($con);
   }
 }

@@ -18,12 +18,15 @@ class IngredientiResolver {
     DBManager::query("INSERT INTO ingrediente VALUES('$nome_ingrediente', $celiachia)");
   }
 
+  static function EliminaIngredientiPietanza($id_pietanza) {
+    DBManager::query("DELETE FROM ricetta WHERE id_pietanza=$id_pietanza");
+  }
+
   static function InserisciIngredientiPietanza($ingredienti, $idPietanza) {
-    echo "rIcetta";
     $query = "INSERT INTO ricetta (id_pietanza, nome) VALUES ";
     $ultimoIngrediente = end($ingredienti);
     foreach($ingredienti as $ingrediente) {
-      $query .= "(".$idPietanza.", '". $ingrediente ."')";
+      $query .= "(" . intval($idPietanza) . ", '". $ingrediente ."')";
       strcmp($ultimoIngrediente, $ingrediente) != 0 ? $query .= "," : null;
     }
     return DBManager::query($query);

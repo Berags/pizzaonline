@@ -16,22 +16,51 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 </head>
 <body>
 	<script src="./static/js/jquery.js"></script>
-	<?php
-	include_once "./components/sidebar.php";
-	?>
+	<!-- SIDEBAR -->
+	<div class="flex items-center">
+		<a onclick="mostraSidebar()" id="sidebarButton" class="w-full">
+			<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="currentColor" class="bi bi-list cursor-pointer" viewBox="0 0 16 16">
+				<path class="ml-8" fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+			</svg>
+		</a>
+		<div class="justify-self-end">
+		</div>
+	</div>
+	<div class="md:flex flex-col md:flex-row md:min-h-screen w-full" id="sidebar">
+		<nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+			<a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="./">Home</a>
+			<a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="./menu">Il nostro menu</a>
+			<a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="./carrello">Carrello</a>
+			<a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="./amministrazione/">Amministrazione</a>
+			<a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="./login">Login</a>
+		</nav>
+	</div>
+	<script>
+	$("#sidebar").hide();
+	var visibile = false;
+	const mostraSidebar = () => {
+		if(visibile) {
+			$("#sidebar").fadeOut();
+		}else {
+			$("#sidebar").fadeIn();
+		}
+		visibile = !visibile;
+	}
+	</script>
+	<!-- SIDEBAR -->
 	<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2" method="POST" action="ordine_completato.php">
 		<div class="-mx-3 md:flex mb-6">
 			<div class="md:w-1/2 px-3 mb-6 md:mb-0">
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
 					Nome
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="grid-first-name" type="text" name="nome">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="grid-first-name" type="text" name="nome">
 			</div>
 			<div class="md:w-1/2 px-3">
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
 					Cognome
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-last-name" type="text" name="cognome">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-last-name" type="text" name="cognome">
 			</div>
 		</div>
 		<div class="-mx-3 md:flex mb-6">
@@ -39,7 +68,7 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-password">
 					Telefono
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3" id="grid-password" type="tel" name="telefono">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3" id="grid-password" type="tel" name="telefono">
 			</div>
 		</div>
 		<div class="-mx-3 md:flex mb-2">
@@ -47,19 +76,19 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
 					City
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-city" type="text" placeholder="Pistoia" name="citta">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-city" type="text" placeholder="Pistoia" name="citta">
 			</div>
 			<div class="md:w-1/2 px-3 mb-6 md:mb-0">
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
 					Via
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-city" type="text" name="via">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-city" type="text" name="via">
 			</div>
 			<div class="md:w-1/2 px-3">
 				<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
 					Civico
 				</label>
-				<input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-zip" type="text" name="civico">
+				<input required class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-zip" type="text" name="civico">
 			</div>
 		</div>
 		<div>
