@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php 
+	<?php
 	session_start();
 	if(!isset($_SESSION["username"])) {
 		header("location: ../");
@@ -16,9 +16,9 @@
 </head>
 <body>
 	<style>
-		.bannerFondo{
-			height: 400px;
-		}
+	.bannerFondo{
+		height: 400px;
+	}
 	</style>
 	<a onclick="mostraSidebar()">
 		<svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="currentColor" class="bi bi-list cursor-pointer" viewBox="0 0 16 16">
@@ -44,14 +44,14 @@
 					I Tre Porcellini
 				</h1>
 			</div>
-			
+
 			<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
-				
+
 				<a class="p-2 sm:p-10 text-center cursor-pointer" href="./pietanza/lista">
 					<div class="py-16 max-w-sm rounded overflow-hidden shadow-lg hover:bg-white transition duration-500  bg-white">
 						<div class="space-y-10">
 							<i class="fas fa-pizza-slice" style="font-size:48px;"></i>
-							
+
 							<div class="px-6 py-4">
 								<div class="space-y-5">
 									<div class="font-bold text-xl mb-2">Pietanze</div>
@@ -63,8 +63,8 @@
 						</div>
 					</div>
 				</a>
-				
-				<a class="p-2 sm:p-10 text-center cursor-pointer text-white" href="./ordine/lista"> 
+
+				<a class="p-2 sm:p-10 text-center cursor-pointer text-white" href="./ordine/lista">
 					<div class="py-16 max-w-sm rounded overflow-hidden shadow-lg bg-purple-500 hover:bg-orange-600 transition duration-500">
 						<div class="space-y-10">
 							<i class="fas fa-chart-line" style="font-size:48px;"></i>
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 				</a>
-				
+
 				<a class="p-2 sm:p-10 text-center cursor-pointer translate-x-2" href="./cliente/lista">
 					<div class="py-16 max-w-sm rounded overflow-hidden shadow-lg hover:bg-white transition duration-500 bg-white">
 						<div class="space-y-10">
@@ -97,23 +97,23 @@
 						</div>
 					</div>
 				</a>
-				
+
 			</div>
 		</div>
-		
+
 	</div>
 	<script src="../static/js/jquery.js"></script>
 	<script>
-		$("#sidebar").hide();
-		var visibile = false;
-		const mostraSidebar = () => {
-			if(visibile) {
-				$("#sidebar").fadeOut();
-			}else {
-				$("#sidebar").fadeIn(); 
-			}
-			visibile = !visibile;
+	$("#sidebar").hide();
+	var visibile = false;
+	const mostraSidebar = () => {
+		if(visibile) {
+			$("#sidebar").fadeOut();
+		}else {
+			$("#sidebar").fadeIn();
 		}
+		visibile = !visibile;
+	}
 	</script>
 </body>
 </html>

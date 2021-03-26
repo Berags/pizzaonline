@@ -1,15 +1,15 @@
-<?php 
+<?php
 class OrdiniResolver {
 	static function GetOrdiniGiornalieri() {
-    	// Oggi
+		// Oggi
 		return DBManager::query("SELECT * FROM `ordine` WHERE DATE(data_ora)=DATE(CURDATE())");
 	}
 	static function GetOrdiniMensili() {
-    	// Oggi
+		// Oggi
 		return DBManager::query("SELECT * FROM `ordine` WHERE MONTH(data_ora)=MONTH(CURDATE())");
 	}
 	static function GetOrdini() {
-    	// Oggi
+		// Oggi
 		return DBManager::query("SELECT * FROM `ordine`");
 	}
 
@@ -18,7 +18,7 @@ class OrdiniResolver {
 	}
 
 	static function GetPietanzeByOrdine($id) {
-		return DBManager::query("SELECT * FROM `contiene` c NATURAL JOIN `pietanza` p WHERE id_ordine=$id");	
+		return DBManager::query("SELECT * FROM `contiene` c NATURAL JOIN `pietanza` p WHERE id_ordine=$id");
 	}
 
 	static function CreaOrdine($nome, $cognome, $telefono, $citta, $via, $civico, $pietanze, $quantita) {
@@ -38,7 +38,7 @@ class OrdiniResolver {
 		}
 		$id_ordine = DBManager::query("SELECT MAX(id_ordine)+1 as id_ordine FROM ordine")[0]["id_ordine"];
 		DBManager::query("INSERT INTO ordine (id_ordine, data_ora, prezzo_tot, id_cliente, via, civico, citta)
-							VALUES ($id_ordine, CURRENT_TIMESTAMP(), $prezzo_tot, $id_cliente, '$via', '$civico', '$citta')");
+		VALUES ($id_ordine, CURRENT_TIMESTAMP(), $prezzo_tot, $id_cliente, '$via', '$civico', '$citta')");
 		foreach($arrayPietanze as $key => $pietanza) {
 			DBManager::query("INSERT INTO contiene (id_pietanza, id_ordine, quantita) VALUES (" . $pietanza[0]['id_pietanza'] . ", " . $id_ordine . ", " . $quantita[$key] . ")");
 		}

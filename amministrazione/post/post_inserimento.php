@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* Jacopo Beragnoli 5°IC */
 session_start();
 if(!isset($_SESSION["username"])) {
@@ -9,10 +9,10 @@ if(!isset($_SESSION["username"])) {
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/pietanze.php";
 include_once "../../resolvers/ingredienti.php";
-$dbLink       = DBManager::getConnection(); 
+$dbLink       = DBManager::getConnection();
 $nomePietanza = mysqli_real_escape_string($dbLink, $_POST["nome_pietanza"]);
-$descrizione  = mysqli_real_escape_string($dbLink, $_POST["descrizione"]); 
-$prezzo       = floatval($_POST["prezzo"]); 
+$descrizione  = mysqli_real_escape_string($dbLink, $_POST["descrizione"]);
+$prezzo       = floatval($_POST["prezzo"]);
 $tipo         = mysqli_real_escape_string($dbLink, $_POST["tipo"]);
 $ingredienti  = $_POST["ingredienti"];
 
@@ -43,13 +43,13 @@ TODO:
 
 
 /* function checkType() { //Per fare l'effettivo controllo prima bisogna vedere come si vogliono inserire gli ingredienti
-  $ingredienti_senza_glutine = DBManager::query("SELECT nome FROM ingrediente WHERE senza_glutine=true AND nome=".$ingrediente["nome"]);
-  //controllo ingredienti per celiaci
-  if($ingredienti_senza_glutine == NULL){
-    echo "Non ci sono ingredienti per celiaci";
-  } 
+$ingredienti_senza_glutine = DBManager::query("SELECT nome FROM ingrediente WHERE senza_glutine=true AND nome=".$ingrediente["nome"]);
+//controllo ingredienti per celiaci
+if($ingredienti_senza_glutine == NULL){
+echo "Non ci sono ingredienti per celiaci";
 }
- */
+}
+*/
 
 function uploadFile() {
   $target_dir = "../../static/images/menu/";
@@ -83,23 +83,23 @@ function uploadFile() {
 
   // Allow certain file formats
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
+  && $imageFileType != "gif" ) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-  $uploadOk = 0;
-}
-
-    // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    return basename( $_FILES["fileToUpload"]["name"]);
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-    return "";
+    $uploadOk = 0;
   }
-}
+
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+      return basename( $_FILES["fileToUpload"]["name"]);
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+      return "";
+    }
+  }
 }
 ?> 

@@ -20,10 +20,10 @@
       </div>
       <div class="flex items-center text-sm font-medium my-2 sm:mt-2 sm:mb-4">
         <span style="text-align: justify;text-justify: inter-word;">
-          Benvenuti nella Pizzeria <b>"I Tre Porcellini"</b>. Dal <b>1963</b> la nostra pizzeria sforna <i>ogni giorno</i> dalle 100 alle 200 pizze di <i>ogni tipo</i>. 
+          Benvenuti nella Pizzeria <b>"I Tre Porcellini"</b>. Dal <b>1963</b> la nostra pizzeria sforna <i>ogni giorno</i> dalle 100 alle 200 pizze di <i>ogni tipo</i>.
           Un ringraziamento va a tutta la nostra <b>famiglia</b> che con il cambio generazionale, "sforna" da anni pizzaioli con <i>grandi capacità</i>. Non perdetevi inoltre il servizio
-          del nostro grande <b>chef</b> nonchè mastro pizzaiolo <b>Jacopo</b>, con il quale ogni giorno riusciamo a garantire un servizio da "<b>leccarsi i baffi"</b>. 
-          Vi consiglio di non perdervi le specialità della casa come per esempio la nostra imperdibile e sfiziosa margherita, composta da materie prime di qualità e soprattutto della zona. 
+          del nostro grande <b>chef</b> nonchè mastro pizzaiolo <b>Jacopo</b>, con il quale ogni giorno riusciamo a garantire un servizio da "<b>leccarsi i baffi"</b>.
+          Vi consiglio di non perdervi le specialità della casa come per esempio la nostra imperdibile e sfiziosa margherita, composta da materie prime di qualità e soprattutto della zona.
           <br><b>Buona pizza!</b>
         </span>
       </div>

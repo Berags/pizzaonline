@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once "./classes/DBManager.php";
 include_once "./resolvers/ordini.php";
 $link = DBManager::getConnection();

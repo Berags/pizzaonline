@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(!isset($_POST["id"])) header("location: ./carrello");
 include_once "./classes/DBManager.php";
 include_once "./resolvers/pietanze.php";
@@ -16,8 +16,7 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 </head>
 <body>
 	<script src="./static/js/jquery.js"></script>
-	<?php 
-	/* Jacopo Beragnoli 5°IC */
+	<?php
 	include_once "./components/sidebar.php";
 	?>
 	<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2" method="POST" action="ordine_completato.php">
@@ -66,8 +65,8 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 		<div>
 			<h1>Riepilogo</h1>
 			<ul style="list-style-type: circle;" class="ml-6">
-				<?php 
-				foreach($arrayIdPietanza as $key => $pietanza ) { 
+				<?php
+				foreach($arrayIdPietanza as $key => $pietanza ) {
 					$objPietanza = PietanzeResolver::GetPizzaById($pietanza)[0];
 					?>
 					<li>

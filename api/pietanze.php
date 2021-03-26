@@ -1,4 +1,4 @@
-<?php 
+<?php
 header("Content-Type: application/json; charset=UTF-8");
 include_once "../classes/DBManager.php";
 include_once "../resolvers/pietanze.php";
