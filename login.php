@@ -23,8 +23,26 @@ session_start();
         <path class="ml-8" fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
       </svg>
     </a>
-    <div class="justify-self-end">
-    </div>
+    <div class="flex w-1/3 justify-self-end items-center ml-64">
+      <?php
+      if(isset($_SESSION['username'])) {
+        echo 'Bentornato, ' . $_SESSION['username'] . '!';
+        ?>
+        <form action="" method="POST">
+          <button class="ml-2 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100" type="submit">logout</button>
+        </form>
+        <?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+          unset($_SESSION['username']);
+          ?>
+          <script>
+          location.reload();
+        </script>
+        <?php
+      }
+    }
+    ?>
+  </div>
   </div>
   <div class="md:flex flex-col md:flex-row md:min-h-screen w-full" id="sidebar">
     <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
@@ -112,6 +130,8 @@ session_start();
 </div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>
 <?php
 /* Jacopo Beragnoli 5°IC */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -135,7 +155,5 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 ?>
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>
 </body>
 </html>
