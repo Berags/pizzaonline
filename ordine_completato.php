@@ -1,7 +1,7 @@
 <?php
-include_once "./classes/DBManager.php";
-include_once "./resolvers/ordini.php";
-$link = DBManager::getConnection();
+include_once './classes/DBManager.php';
+include_once './resolvers/ordini.php';
+$link        = DBManager::getConnection();
 $nome        = mysqli_real_escape_string($link, $_POST["nome"]);
 $cognome     = mysqli_real_escape_string($link, $_POST["cognome"]);
 $telefono    = mysqli_real_escape_string($link, $_POST["telefono"]);
