@@ -21,7 +21,7 @@ $ingredienti = array_filter($ingredienti);
 $ingredienti = array_unique($ingredienti);
 print_r($ingredienti);
 // Controlliamo se sono presenti gli ingredienti inseriti dall'utente nel database
-$nomeIngredientiDatabase = IngredientiResolver::GetNomeIngredienti();
+$nomeIngredientiDatabase = IngredientiResolver::getNomeIngredienti();
 foreach($ingredienti as $ingrediente) {
   if(!in_array($ingrediente, $nomeIngredientiDatabase)) {
     echo "Un ingrediente inserito non esiste nel database!";
@@ -31,11 +31,11 @@ foreach($ingredienti as $ingrediente) {
 
 $immagine = uploadFile();
 if($immagine == "") {
-  $immagine = PietanzeResolver::GetImmaginePietanza($id)["imgpath"];
+  $immagine = PietanzeResolver::getImmaginePietanza($id)["imgpath"];
 }
-PietanzeResolver::ModificaPietanza($id, $nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
-IngredientiResolver::EliminaIngredientiPietanza($id);
-IngredientiResolver::InserisciIngredientiPietanza($ingredienti, $id);
+PietanzeResolver::modificaPietanza($id, $nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
+IngredientiResolver::eliminaIngredientiPietanza($id);
+IngredientiResolver::inserisciIngredientiPietanza($ingredienti, $id);
 header("location: ../pietanza/lista");
 
 function uploadFile() {

@@ -89,7 +89,11 @@
       </div>
     </div>
   </div>
-  <?php include_once "./components/menu.php"; ?>
+  <?php
+  include_once './classes/DBManager.php';
+  include_once './resolvers/pietanze.php';
+  include_once "./components/menu.php";
+  ?>
   <script src="./static/js/jquery.js"></script>
   <script src="./static/js/carrello.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>

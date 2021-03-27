@@ -5,16 +5,10 @@
 */
 class DBManager
 {
-  public static $host     = "mysql1.nuttyabouthosting.co.uk";
-  public static $username = "y1352_j.beragnoli";
-  public static $password = "3C8Xj8OWEM84_";
-  public static $dbname   = "y1352_pizzaonline";
-
-  function __construct($host, $user, $password) {
-    $this->host = $host;
-    $this->username = $user;
-    $this->password = $password;
-  }
+  private static $host     = 'mysql1.nuttyabouthosting.co.uk';
+  private static $username = 'y1352_j.beragnoli';
+  private static $password = '3C8Xj8OWEM84_';
+  private static $dbname   = 'y1352_pizzaonline';
 
   static function query($q) {
     $con = mysqli_connect(self::$host, self::$username, self::$password, self::$dbname);

@@ -48,8 +48,8 @@
 	</script>
 	<!-- SIDEBAR -->
 	<?php
-	include_once "./classes/DBManager.php";
-	include_once "./resolvers/pietanze.php";
+	include_once './classes/DBManager.php';
+	include_once './resolvers/pietanze.php';
 
 	// Mostra solo il menu se non è presente alcuna pietanza
 	if(!isset($_GET["id_pietanza"])) {
@@ -58,7 +58,7 @@
 	}
 
 	// Quello che vogliamo vedere è una pietanza specifica
-	$pietanza = PietanzeResolver::GetPizzaById($_GET["id_pietanza"]);
+	$pietanza = PietanzeResolver::getPizzaById($_GET["id_pietanza"]);
 	include_once "./components/pizza.php";
 	?>
 </body>

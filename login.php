@@ -118,7 +118,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   include_once "./classes/DBManager.php";
   include_once "./resolvers/account.php";
   $username = mysqli_real_escape_string(DBManager::getConnection(), $_POST["username"]);
-  $user = AccountResolver::GetUserFromUsername($username)[0];
+  $user = AccountResolver::getUserFromUsername($username)[0];
   if(password_verify($_POST["pw"], $user["passwordHash"])) {
     ?>
     <script>

@@ -98,7 +98,7 @@ $arrayQuantitaPietanza = $_POST["quantita"];
 			<ul style="list-style-type: circle;" class="ml-6">
 				<?php
 				foreach($arrayIdPietanza as $key => $pietanza ) {
-					$objPietanza = PietanzeResolver::GetPizzaById($pietanza)[0];
+					$objPietanza = PietanzeResolver::getPizzaById($pietanza)[0];
 					?>
 					<li>
 						<input type="hidden" name="id[]" value="<?php echo $pietanza; ?>">

@@ -102,7 +102,7 @@ if(!isset($_GET["id"])) {
                   <p class="text-sm text-gray-500">Per aggiungere un nuovo ingrediente cliccare <a class="text-blue-700 cursor-pointer" onclick="nuovoIngrediente()">qui.</a></p>
                   <div id="inserimento_ingredienti">
                     <?php
-                    $ingredientiPresenti = IngredientiResolver::GetIngredientiPerPietanza($_GET["id"]);
+                    $ingredientiPresenti = IngredientiResolver::getIngredientiPerPietanza($_GET["id"]);
                     if(isset($ingredientiPresenti)) {
                       foreach($ingredientiPresenti as $in) { ?>
                         <select name="ingredienti[]" class="text-sm sm:text-base relative w-full border rounded placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2 pr-2 pl-2" id="select-ingredienti">

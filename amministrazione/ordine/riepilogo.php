@@ -13,7 +13,7 @@ if(!isset($_GET["id"])) {
   header("location: ./lista");
   die();
 }
-$ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::getConnection(), $_GET["id"]))[0];
+$ordine = OrdiniResolver::getOrdineById(mysqli_real_escape_string(DBManager::getConnection(), $_GET["id"]))[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,7 @@ $ordine = OrdiniResolver::GetOrdineById(mysqli_real_escape_string(DBManager::get
       <ul style="list-style-type:disc">
         <?php
         /* Jacopo Beragnoli 5°IC */
-        $pietanze = OrdiniResolver::GetPietanzeByOrdine($ordine["id_ordine"]);
+        $pietanze = OrdiniResolver::getPietanzeByOrdine($ordine["id_ordine"]);
         if(!empty($pietanze)) {
           foreach($pietanze as $pietanza) {
             echo "<li>" . $pietanza["quantita"] . " x " .$pietanza["nome"];

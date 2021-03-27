@@ -69,7 +69,7 @@
         <?php
         include_once "./classes/DBManager.php";
         include_once "./resolvers/pietanze.php";
-        $menu = PietanzeResolver::GetMenu();
+        $menu = PietanzeResolver::getMenu();
 
         foreach($menu as $pietanza) {
           ?>

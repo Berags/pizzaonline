@@ -9,12 +9,12 @@ if(isset($_GET['method']) && $_GET['method'] == "delete") {
 GetPietanze();
 
 function GetPietanze() {
-	echo json_encode(PietanzeResolver::GetMenu());
+	echo json_encode(PietanzeResolver::getMenu());
 }
 
 function DeletePietanza() {
 	$response = array("status" => "ok", "message" => "Pietanza correttamente eliminata!");
-	PietanzeResolver::EliminaPietanza(mysqli_real_escape_string(DBManager::getConnection(), $_GET["id"]));
+	PietanzeResolver::eliminaPietanza(mysqli_real_escape_string(DBManager::getConnection(), $_GET["id"]));
 	echo json_encode($response);
 }
 ?>

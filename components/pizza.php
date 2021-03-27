@@ -7,11 +7,11 @@
   			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
   			<p class="pt-4 pr-4 text-base font-bold flex items-center justify-center lg:justify-start">Pizza <?php echo $pietanza[0]["tipo"];?></p>
   			<p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">Prezzo: €<?php echo $pietanza[0]["prezzo"];?></p>
-  			<p class="pt-8 text-sm"><?php echo $pietanza[0]["descrizione"]; ?></p>
+  			<p class="pt-8 text-sm"><?php echo $pietanza[0]['descrizione']; ?></p>
 
   			<div class="pt-12 pb-8 flex justify-center gap-4">
           <?php
-          $returnLink = "./";
+          $returnLink = './';
           if(isset($_GET['back'])) {
             $returnLink = $_GET['back'];
           }
@@ -33,7 +33,7 @@
 </div>
 <!--Img Col-->
 <div class="w-full lg:w-2/5">
-  <img src="./static/images/menu/<?php echo $pietanza[0]["imgpath"]; ?>" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
+  <img src="./static/images/menu/<?php echo $pietanza[0]['imgpath']; ?>" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
 </div>
 
 </div>

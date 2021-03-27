@@ -4,8 +4,6 @@ session_start();
 if(!isset($_SESSION["username"])) {
   header("location: ../");
 }
-?>
-<?php
 include_once "../../classes/DBManager.php";
 include_once "../../resolvers/pietanze.php";
 include_once "../../resolvers/ingredienti.php";
@@ -21,7 +19,7 @@ $ingredienti = array_filter($ingredienti);
 $ingredienti = array_unique($ingredienti);
 
 // Controlliamo se sono presenti gli ingredienti inseriti dall'utente nel database
-$nomeIngredientiDatabase = IngredientiResolver::GetNomeIngredienti();
+$nomeIngredientiDatabase = IngredientiResolver::getNomeIngredienti();
 foreach($ingredienti as $ingrediente) {
   if(!in_array($ingrediente, $nomeIngredientiDatabase)) {
     echo "Un ingrediente inserito non esiste nel database!";
@@ -30,8 +28,8 @@ foreach($ingredienti as $ingrediente) {
 }
 
 $immagine = uploadFile();
-$id_pietanza = PietanzeResolver::InserisciPietanza($nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
-IngredientiResolver::InserisciIngredientiPietanza($ingredienti, intval($id_pietanza));
+$id_pietanza = PietanzeResolver::inserisciPietanza($nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
+IngredientiResolver::inserisciIngredientiPietanza($ingredienti, intval($id_pietanza));
 header("location: ../pietanze");
 /*
 TODO:

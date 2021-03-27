@@ -11,8 +11,6 @@
   </div>
   <div class="flex flex-wrap flex-auto">
     <?php
-    include_once './classes/DBManager.php';
-    include_once './resolvers/pietanze.php';
     $menu = PietanzeResolver::GetMenu();
 
     foreach($menu as $pietanza) { ?>
@@ -23,13 +21,13 @@
           </div>
           <div class="flex-auto pl-6">
             <h1 class="w-full flex-none font-semibold mb-2.5 text-purple-900 h-12 overflow-y-auto text-lg">
-              <a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>"><?php echo $pietanza["nome"]; ?></a>
+              <a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>"><?php echo $pietanza['nome']; ?></a>
             </h1>
             <div class="leading-7 font-bold h-4 mt-2 mb-3">
-              €<?php echo $pietanza["prezzo"]; ?>
+              €<?php echo $pietanza['prezzo']; ?>
             </div>
             <div class="flex items-baseline h-16 overflow-y-auto">
-              <?php echo $pietanza["descrizione"]; ?>
+              <?php echo $pietanza['descrizione']; ?>
             </div>
             <div class="flex space-x-3 text-sm font-semibold self-end overflow-y-auto">
               <button type="button" data-bs-toggle="tooltip" data-bs-placement="right" title="Aggiungi al carrello" onclick="aggiungiElementoAlCarrello(<?php echo $pietanza['id_pietanza']; ?>, 1, '<?php echo $pietanza['nome']; ?>', '<?php echo $pietanza['imgpath']; ?>', <?php echo $pietanza['prezzo']; ?>)">
