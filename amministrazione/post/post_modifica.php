@@ -36,7 +36,7 @@ if($immagine == "") {
 PietanzeResolver::modificaPietanza($id, $nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
 IngredientiResolver::eliminaIngredientiPietanza($id);
 IngredientiResolver::inserisciIngredientiPietanza($ingredienti, $id);
-header("location: ../pietanza/lista");
+//header("location: ../pietanza/lista");
 
 function uploadFile() {
   $target_dir = "../../static/images/menu/";
@@ -66,7 +66,7 @@ function uploadFile() {
   }
 
   // Check file size
-  if ($_FILES["fileToUpload"]["size"] > 500000) {
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
   }

@@ -6,8 +6,8 @@ $(document).ready(() => {
 });
 const nome = $("#nome_pietanza");
 const descrizione = $("#descrizione");
-const prezzo = $("prezzo");
-const tipo = $("tipo");
+const prezzo = $("#prezzo");
+const tipo = $("#tipo");
 
 const controllaNomePietanza = () => {
   if (nome.val() === "" || nome.val() === undefined || nome.val() === null) {
@@ -19,7 +19,8 @@ const controllaNomePietanza = () => {
 };
 
 const controllaPrezzo = () => {
-  console.log(prezzo.val());
+  const p = document.getElementById("prezzo");
+  console.log(p.innerHTML);
   if (
     prezzo.val() === "" ||
     prezzo.val() === undefined ||

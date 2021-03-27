@@ -30,7 +30,7 @@ foreach($ingredienti as $ingrediente) {
 $immagine = uploadFile();
 $id_pietanza = PietanzeResolver::inserisciPietanza($nomePietanza, $descrizione, $tipo, $prezzo, $immagine);
 IngredientiResolver::inserisciIngredientiPietanza($ingredienti, intval($id_pietanza));
-header("location: ../pietanze");
+header("location: ../pietanza/lista");
 /*
 TODO:
 - Inserimento pietanza

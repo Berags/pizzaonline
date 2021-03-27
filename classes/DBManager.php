@@ -61,7 +61,6 @@ class DBManager
       //Nessun risultato --> die();
     }
 
-    mysqli_close($con);
     return mysqli_insert_id($con);
   }
 }

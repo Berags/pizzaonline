@@ -29,13 +29,13 @@ class OrdiniResolver {
 		}
 		$arrayPietanze = array();
 		foreach($pietanze as $pietanza) {
-			$arrayPietanze[] = DBManager::query("SELECT * FROM pietanza WHERE id_pietanza=$pietanza");
+			$arrayPietanze[] = DBManager::query("SELECT * FROM pietanza WHERE id_pietanza=$pietanza AND visibile=1");
 		}
 		$prezzo_tot = 0;
 		foreach($arrayPietanze as $key => $pietanza) {
-			$prezzo_tot += $quantita[$key] *$pietanza[0]['prezzo'];
+			$prezzo_tot += $quantita[$key] * $pietanza[0]['prezzo'];
 		}
-		$id_ordine = DBManager::query("SELECT MAX(id_ordine)+1 as id_ordine FROM ordine")[0]['id_ordine'];
+		$id_ordine = DBManager::query("SELECT COALESCE(MAX(id_ordine)+1,1) as id_ordine FROM ordine")[0]['id_ordine'];
 		DBManager::query("INSERT INTO ordine (id_ordine, data_ora, prezzo_tot, id_cliente, via, civico, citta)
 		VALUES ($id_ordine, CURRENT_TIMESTAMP(), $prezzo_tot, $id_cliente, '$via', '$civico', '$citta')");
 		foreach($arrayPietanze as $key => $pietanza) {

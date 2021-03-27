@@ -2,11 +2,11 @@
 /* Jacopo Beragnoli 5°IC */
 class PietanzeResolver {
   static function getMenu() {
-    return DBManager::query("SELECT * FROM pietanza");
+    return DBManager::query("SELECT * FROM pietanza WHERE visibile=1");
   }
 
   static function getPizzaById($id) {
-    return DBManager::query("SELECT * FROM pietanza WHERE id_pietanza=$id");
+    return DBManager::query("SELECT * FROM pietanza WHERE id_pietanza=$id AND visibile=1");
   }
 
   static function getId($nomePietanza) {
@@ -23,8 +23,7 @@ class PietanzeResolver {
   }
 
   static function eliminaPietanza($id) {
-    DBManager::query("DELETE FROM ricetta WHERE id_pietanza=$id");
-    return DBManager::query("DELETE FROM pietanza WHERE id_pietanza=$id");
+    return DBManager::query("UPDATE pietanza SET visibile=0 WHERE id_pietanza=$id");
   }
 
   static function getImmaginePietanza($id) {
