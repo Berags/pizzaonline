@@ -22,8 +22,9 @@
     <div class="flex w-1/3 justify-self-end items-center ml-64">
       <?php
       session_start();
+      require_once './classes/SessionManager.php';
       if(isset($_SESSION['username'])) {
-        echo 'Bentornato, ' . $_SESSION['username'] . '!';
+        echo 'Bentornato, ' . SessionManager::decode($_SESSION['username'])['username'] . '!';
         ?>
         <form action="" method="POST">
           <button class="ml-2 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100" type="submit">logout</button>
@@ -91,6 +92,7 @@
         $menu = PietanzeResolver::getMenu();
 
         foreach($menu as $pietanza) {
+          //TODO(bera): filtrare le pietanze in base al tipo (rossa, bianca e senza glutine)
           ?>
           <div class="px-3 py-3 flex flex-col border border-gray-200 rounded-md h-36 justify-between">
             <div>

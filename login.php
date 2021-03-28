@@ -26,7 +26,8 @@ session_start();
     <div class="flex w-1/3 justify-self-end items-center ml-64">
       <?php
       if(isset($_SESSION['username'])) {
-        echo 'Bentornato, ' . $_SESSION['username'] . '!';
+      require_once './classes/SessionManager.php';
+        echo 'Bentornato, ' . SessionManager::decode($_SESSION['username'])['username'] . '!';
         ?>
         <form action="" method="POST">
           <button class="ml-2 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100" type="submit">logout</button>
@@ -135,6 +136,7 @@ session_start();
 <?php
 /* Jacopo Beragnoli 5°IC */
 if($_SERVER['REQUEST_METHOD'] == "POST") {
+  require_once './classes/SessionManager.php';
   include_once "./classes/DBManager.php";
   include_once "./resolvers/account.php";
   $username = mysqli_real_escape_string(DBManager::getConnection(), $_POST["username"]);
@@ -145,7 +147,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     toastr["success"]("Login effettuato correttamente", "Account");
     </script>
     <?php
-    $_SESSION["username"] = $username;
+    $_SESSION['username'] = SessionManager::login($username);
     session_write_close();
     ?>
     <script>

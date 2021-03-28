@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I tre porcellini - Home</title>
+  <title>I tre porcellini - Menu</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/menu.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -22,7 +22,8 @@
       <?php
       session_start();
       if(isset($_SESSION['username'])) {
-        echo 'Bentornato, ' . $_SESSION['username'] . '!';
+      require_once './classes/SessionManager.php';
+        echo 'Bentornato, ' . SessionManager::decode($_SESSION['username'])['username'] . '!';
         ?>
         <form action="" method="POST">
           <button class="ml-2 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100" type="submit">logout</button>

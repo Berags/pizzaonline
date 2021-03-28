@@ -28,7 +28,8 @@
     <div class="flex w-1/3 justify-self-end items-center ml-64">
       <?php
       if(isset($_SESSION['username'])) {
-        echo 'Bentornato, ' . $_SESSION['username'] . '!';
+      require_once '../../classes/SessionManager.php';
+        echo 'Bentornato, ' . SessionManager::decode($_SESSION['username'])['username'] . '!';
         ?>
         <form action="" method="POST">
           <button class="ml-2 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100" type="submit">logout</button>
