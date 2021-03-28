@@ -43,7 +43,7 @@ class SessionManager {
       $decoded = (array) JWT::decode($jwt, SessionManager::SECRET_KEY, array('HS256'));
     }catch(\Firebase\JWT\ExpiredException $e) {
       // JWT scaduto
-      $decoded = refresh($jwt);
+      $decoded = SessionManager::refresh($jwt);
     }
     return $decoded;
   }
@@ -53,7 +53,7 @@ class SessionManager {
   * @param string $jwt Il Token da refreshare
   * @return string Il token sotto il formato di stringa valido
   */
-  private static function refresh(string $jwt): string {
+  private static function refresh(string $jwt): array {
     JWT::$leeway = 720000; // Impostiamo il tempo del server con un gap di 720000 secondi
     // in modo tale da poter generare un nuovo token con gli stessi dati (username)
 
