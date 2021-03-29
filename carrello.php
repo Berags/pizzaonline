@@ -35,12 +35,12 @@
           ?>
           <script>
           location.reload();
-        </script>
-        <?php
+          </script>
+          <?php
+        }
       }
-    }
-    ?>
-  </div>
+      ?>
+    </div>
   </div>
   <div class="md:flex flex-col md:flex-row md:min-h-screen w-full" id="sidebar">
     <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
@@ -79,71 +79,120 @@
           </span>
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-2 px-5 mt-5 overflow-y-auto">
-        <script>
-        const aggiungiCarrelloDaCarrello = (id, quantita, nome, imgpath, prezzo) => {
-          aggiungiElementoAlCarrello(id, quantita, nome, imgpath, prezzo);
-          location.reload();
-        }
-        </script>
-        <?php
-        include_once "./classes/DBManager.php";
-        include_once "./resolvers/pietanze.php";
-        $menu = PietanzeResolver::getMenu();
+      <div class="mt-5 flex flex-row px-5">
+        <a
+        class="px-5 py-1 bg-purple-500 rounded-2xl text-white text-sm font-semibold mr-4" id="Tutto" onclick="mostraTutto()"
+        >
+        Tutto
+      </span>
+      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Rossa" onclick="aggiungiAiTipi('Rossa')">
+        Rossa
+      </a>
+      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Bianca" onclick="aggiungiAiTipi('Bianca')">
+        Bianca
+      </a>
+      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Senza-glutine" onclick="aggiungiAiTipi('Senza-glutine')">
+        Senza glutine
+      </a>
+    </div>
+    <div class="grid grid-cols-3 gap-2 px-5 mt-5 overflow-y-auto">
+      <script>
+      const aggiungiCarrelloDaCarrello = (id, quantita, nome, imgpath, prezzo) => {
+        aggiungiElementoAlCarrello(id, quantita, nome, imgpath, prezzo);
+        location.reload();
+      }
+      </script>
+      <?php
+      include_once "./classes/DBManager.php";
+      include_once "./resolvers/pietanze.php";
+      $menu = PietanzeResolver::getMenu();
 
-        foreach($menu as $pietanza) {
-          //TODO(bera): filtrare le pietanze in base al tipo (rossa, bianca e senza glutine)
-          ?>
-          <div class="px-3 py-3 flex flex-col border border-gray-200 rounded-md h-36 justify-between">
-            <div>
-              <div class="font-bold text-gray-800 overflow-y-auto h-12"><a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>&back=./carrello"><?php echo $pietanza["nome"]; ?></a></div>
-            </div>
-            <div class="flex flex-row justify-between items-center">
-              <span class="self-end font-bold text-lg text-yellow-500">€<?php echo $pietanza["prezzo"]; ?>
-                <button type="button" class="ml-2 text-black" data-bs-toggle="tooltip" data-bs-placement="right" title="Aggiungi al carrello" onclick="aggiungiCarrelloDaCarrello(<?php echo $pietanza['id_pietanza']; ?>, 1, '<?php echo $pietanza['nome']; ?>', '<?php echo $pietanza['imgpath']; ?>', <?php echo $pietanza['prezzo']; ?>);">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-                    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>
-                </button>
-              </span>
-              <img src="./static/images/menu/<?php echo $pietanza['imgpath'] ?>" class=" h-14 w-14 object-cover rounded-md" alt="">
-            </div>
+      foreach($menu as $pietanza) {
+        //TODO(bera): filtrare le pietanze in base al tipo (rossa, bianca e senza glutine)
+        ?>
+        <div class="px-3 py-3 flex flex-col border border-gray-200 rounded-md h-36 justify-between <?php echo str_replace(' ', '-', $pietanza['tipo']); ?>">
+          <div>
+            <div class="font-bold text-gray-800 overflow-y-auto h-12"><a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>&back=./carrello"><?php echo $pietanza["nome"]; ?></a></div>
           </div>
-        <?php } ?>
+          <div class="flex flex-row justify-between items-center">
+            <span class="self-end font-bold text-lg text-yellow-500">€<?php echo $pietanza["prezzo"]; ?>
+              <button type="button" class="ml-2 text-black" data-bs-toggle="tooltip" data-bs-placement="right" title="Aggiungi al carrello" onclick="aggiungiCarrelloDaCarrello(<?php echo $pietanza['id_pietanza']; ?>, 1, '<?php echo $pietanza['nome']; ?>', '<?php echo $pietanza['imgpath']; ?>', <?php echo $pietanza['prezzo']; ?>);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+              </button>
+            </span>
+            <img src="./static/images/menu/<?php echo $pietanza['imgpath'] ?>" class=" h-14 w-14 object-cover rounded-md" alt="">
+          </div>
+        </div>
+      <?php } ?>
+    </div>
+  </div>
+  <div class="w-full lg:w-2/5">
+    <div class="flex flex-row items-center justify-between px-5 mt-5">
+      <div class="font-bold text-xl">Ordine corrente</div>
+      <div class="font-semibold">
+        <span class="px-4 py-2 rounded-md bg-red-100 text-red-500 cursor-pointer" onclick="eliminaCarrello()">Svuota carrello</span>
       </div>
     </div>
-    <div class="w-full lg:w-2/5">
-      <div class="flex flex-row items-center justify-between px-5 mt-5">
-        <div class="font-bold text-xl">Ordine corrente</div>
-        <div class="font-semibold">
-          <span class="px-4 py-2 rounded-md bg-red-100 text-red-500 cursor-pointer" onclick="eliminaCarrello()">Svuota carrello</span>
+    <form action="post_ordine.php" method="POST" class="px-5 py-4 mt-5 overflow-y-auto h-64" id="ordini">
+    </form>
+    <div class="px-5 mt-5">
+      <div class="py-2 rounded-md shadow-lg">
+        <div class="mt-3 pb-2 px-4 flex items-center justify-between">
+          <span class="font-semibold text-2xl">Totale</span>
+          <span class="font-bold text-2xl" id="totale">€0.00</span>
         </div>
       </div>
-      <form action="post_ordine.php" method="POST" class="px-5 py-4 mt-5 overflow-y-auto h-64" id="ordini">
-      </form>
-      <div class="px-5 mt-5">
-        <div class="py-2 rounded-md shadow-lg">
-          <div class="mt-3 pb-2 px-4 flex items-center justify-between">
-            <span class="font-semibold text-2xl">Totale</span>
-            <span class="font-bold text-2xl" id="totale">€0.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="px-5 mt-5">
-        <div class="px-4 py-4 rounded-md shadow-lg text-center bg-purple-700 text-white font-semibold cursor-pointer" onclick="controllaInvio()">
-          Ordina
-        </div>
+    </div>
+    <div class="px-5 mt-5">
+      <div class="px-4 py-4 rounded-md shadow-lg text-center bg-purple-700 text-white font-semibold cursor-pointer" onclick="controllaInvio()">
+        Ordina
       </div>
     </div>
   </div>
+</div>
 </div>
 <script src="./static/js/carrello.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>
 <script>
 $(document).ready(() => {
-  componiTabella(ottieniCarrello())
+  componiTabella(ottieniCarrello());
 });
+
+const tipi = ["Rossa", "Bianca", "Senza-glutine"];
+let cliccato = [false, false, false];
+const mostraPietanzePerTipo = () => {
+  $("#Tutto").removeClass('bg-purple-500');
+  $("#Tutto").removeClass('text-white');
+  cliccato.forEach((item, i) => {
+    item ? $("." + tipi[i]).show() : $("." + tipi[i]).hide();
+    item ? $("#" + tipi[i]).addClass('bg-purple-500') : $("#" + tipi[i]).removeClass('bg-purple-500');
+    item ? $("#" + tipi[i]).addClass('text-white') : $("#" + tipi[i]).removeClass('text-white');
+  });
+}
+
+const aggiungiAiTipi = (tipo) => {
+  cliccato.forEach((item, i) => {
+    if(tipo === tipi[i]) cliccato[i] = !cliccato[i];
+  });
+  mostraPietanzePerTipo();
+  if(cliccato.every( (val, i, arr) => val === false )) {
+    mostraTutto();
+  }
+}
+
+const mostraTutto = () => {
+  $("#Tutto").addClass('bg-purple-500');
+  $("#Tutto").addClass('text-white');
+  tipi.forEach((item, i) => {
+    cliccato[i] = false;
+    $("#" + item).removeClass('bg-purple-500');
+    $("#" + item).removeClass('text-white');
+    $("." + item).show();
+  });
+}
 </script>
 </body>
 </html>

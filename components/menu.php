@@ -17,7 +17,7 @@
       <div class="p-6 mt-10 sm:w-full md:w-1/2 lg:w-1/3">
         <div class="bg-white w-full flex p-1 items-center object-cover rounded-lg shadow-2xl">
           <div class="flex-none w-44 h-44 relative">
-            <img src="./static/images/menu/<?php echo $pietanza["imgpath"]; ?>" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
+            <img src="./static/images/menu/<?php echo $pietanza['imgpath']; ?>" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
           </div>
           <div class="flex-auto pl-6">
             <h1 class="w-full flex-none font-semibold text-purple-900 h-12 overflow-y-auto text-lg">

@@ -35,6 +35,9 @@ const aggiungiElementoAlCarrello = (id, quantita, nome, imgpath, prezzo) => {
 };
 
 const componiTabella = (carrello) => {
+  if(!carrello) {
+    return;
+  }
   carrello
   .filter((el) => {
     if (el === null) return false;
@@ -94,7 +97,6 @@ const rimuoviDaCarrello = (index, prezzo) => {
 };
 
 const controllaInvio = () => {
-  console.log(_localStorage["carrello"]);
   if (!_localStorage["carrello"]) {
     toastr["error"]("Devi selezionare almeno una pietanza!", "Carrello");
     return;
