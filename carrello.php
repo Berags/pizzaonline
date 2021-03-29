@@ -108,7 +108,6 @@
       $menu = PietanzeResolver::getMenu();
 
       foreach($menu as $pietanza) {
-        //TODO(bera): filtrare le pietanze in base al tipo (rossa, bianca e senza glutine)
         ?>
         <div class="px-3 py-3 flex flex-col border border-gray-200 rounded-md h-36 justify-between <?php echo str_replace(' ', '-', $pietanza['tipo']); ?>">
           <div>
@@ -156,43 +155,5 @@
 </div>
 <script src="./static/js/carrello.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" charset="utf-8"></script>
-<script>
-$(document).ready(() => {
-  componiTabella(ottieniCarrello());
-});
-
-const tipi = ["Rossa", "Bianca", "Senza-glutine"];
-let cliccato = [false, false, false];
-const mostraPietanzePerTipo = () => {
-  $("#Tutto").removeClass('bg-purple-500');
-  $("#Tutto").removeClass('text-white');
-  cliccato.forEach((item, i) => {
-    item ? $("." + tipi[i]).show() : $("." + tipi[i]).hide();
-    item ? $("#" + tipi[i]).addClass('bg-purple-500') : $("#" + tipi[i]).removeClass('bg-purple-500');
-    item ? $("#" + tipi[i]).addClass('text-white') : $("#" + tipi[i]).removeClass('text-white');
-  });
-}
-
-const aggiungiAiTipi = (tipo) => {
-  cliccato.forEach((item, i) => {
-    if(tipo === tipi[i]) cliccato[i] = !cliccato[i];
-  });
-  mostraPietanzePerTipo();
-  if(cliccato.every( (val, i, arr) => val === false )) {
-    mostraTutto();
-  }
-}
-
-const mostraTutto = () => {
-  $("#Tutto").addClass('bg-purple-500');
-  $("#Tutto").addClass('text-white');
-  tipi.forEach((item, i) => {
-    cliccato[i] = false;
-    $("#" + item).removeClass('bg-purple-500');
-    $("#" + item).removeClass('text-white');
-    $("." + item).show();
-  });
-}
-</script>
 </body>
 </html>

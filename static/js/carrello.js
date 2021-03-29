@@ -1,6 +1,10 @@
 const _localStorage = window.localStorage;
 let totale = 0;
 
+$(document).ready(() => {
+  componiTabella(ottieniCarrello());
+});
+
 const ottieniCarrello = () => {
   return JSON.parse(_localStorage.getItem("carrello"));
 };
@@ -103,3 +107,36 @@ const controllaInvio = () => {
   }
   $("#ordini").submit();
 };
+
+const tipi = ["Rossa", "Bianca", "Senza-glutine"];
+let cliccato = [false, false, false];
+const mostraPietanzePerTipo = () => {
+  $("#Tutto").removeClass('bg-purple-500');
+  $("#Tutto").removeClass('text-white');
+  cliccato.forEach((item, i) => {
+    item ? $("." + tipi[i]).show() : $("." + tipi[i]).hide();
+    item ? $("#" + tipi[i]).addClass('bg-purple-500') : $("#" + tipi[i]).removeClass('bg-purple-500');
+    item ? $("#" + tipi[i]).addClass('text-white') : $("#" + tipi[i]).removeClass('text-white');
+  });
+}
+
+const aggiungiAiTipi = (tipo) => {
+  cliccato.forEach((item, i) => {
+    if(tipo === tipi[i]) cliccato[i] = !cliccato[i];
+  });
+  mostraPietanzePerTipo();
+  if(cliccato.every( (val, i, arr) => val === false )) {
+    mostraTutto();
+  }
+}
+
+const mostraTutto = () => {
+  $("#Tutto").addClass('bg-purple-500');
+  $("#Tutto").addClass('text-white');
+  tipi.forEach((item, i) => {
+    cliccato[i] = false;
+    $("#" + item).removeClass('bg-purple-500');
+    $("#" + item).removeClass('text-white');
+    $("." + item).show();
+  });
+}
