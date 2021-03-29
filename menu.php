@@ -70,6 +70,7 @@
 	<?php
 	include_once './classes/DBManager.php';
 	include_once './resolvers/pietanze.php';
+  include_once './resolvers/ingredienti.php';
 
 	// Mostra solo il menu se non è presente alcuna pietanza
 	if(!isset($_GET["id_pietanza"])) {
@@ -79,6 +80,7 @@
 
 	// Quello che vogliamo vedere è una pietanza specifica
 	$pietanza = PietanzeResolver::getPizzaById($_GET["id_pietanza"]);
+  $ingredienti = IngredientiResolver::getIngredientiPerPietanza($pietanza[0]['id_pietanza']);
 	include_once "./components/pizza.php";
 	?>
 </body>

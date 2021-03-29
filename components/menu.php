@@ -20,10 +20,10 @@
             <img src="./static/images/menu/<?php echo $pietanza["imgpath"]; ?>" alt="" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
           </div>
           <div class="flex-auto pl-6">
-            <h1 class="w-full flex-none font-semibold mb-2.5 text-purple-900 h-12 overflow-y-auto text-lg">
+            <h1 class="w-full flex-none font-semibold text-purple-900 h-12 overflow-y-auto text-lg">
               <a href="./menu?id_pietanza=<?php echo $pietanza['id_pietanza']; ?>"><?php echo $pietanza['nome']; ?></a>
             </h1>
-            <div class="leading-7 font-bold h-4 mt-2 mb-3">
+            <div class="leading-7 font-bold h-4 mb-3">
               €<?php echo $pietanza['prezzo']; ?>
             </div>
             <div class="flex items-baseline h-16 overflow-y-auto">
