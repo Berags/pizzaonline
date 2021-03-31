@@ -12,7 +12,7 @@
   <div class="flex flex-wrap flex-auto">
     <?php
     $menu = PietanzeResolver::GetMenu();
-
+    
     foreach($menu as $pietanza) { ?>
       <div class="p-6 mt-10 sm:w-full md:w-1/2 lg:w-1/3">
         <div class="bg-white w-full flex p-1 items-center object-cover rounded-lg shadow-2xl">

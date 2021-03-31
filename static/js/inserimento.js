@@ -14,7 +14,7 @@ const controllaNomePietanza = () => {
     $("#errore_nome").fadeIn();
     return;
   }
-
+  
   $("#errore_nome").fadeOut();
 };
 
@@ -30,7 +30,7 @@ const controllaPrezzo = () => {
     $("#divTipo").show();
     return;
   }
-
+  
   $("#errore_prezzo").fadeOut();
 };
 
@@ -43,7 +43,7 @@ const controllaDescrizione = () => {
     $("#errore_descrizione").fadeIn();
     return;
   }
-
+  
   $("#errore_descrizione").fadeOut();
 };
 

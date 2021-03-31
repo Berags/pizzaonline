@@ -12,15 +12,15 @@ class OrdiniResolver {
 		// Ordini totali
 		return DBManager::query("SELECT * FROM `ordine`");
 	}
-
+	
 	static function getOrdineById($id) {
 		return DBManager::query("SELECT * FROM `ordine` WHERE id_ordine=$id");
 	}
-
+	
 	static function getPietanzeByOrdine(int $id) {
 		return DBManager::query("SELECT * FROM `contiene` c NATURAL JOIN `pietanza` p WHERE id_ordine=$id");
 	}
-
+	
 	static function creaOrdine($nome, $cognome, $telefono, $citta, $via, $civico, $pietanze, $quantita) {
 		$cliente = DBManager::query("SELECT * FROM cliente WHERE nome='$nome' AND cognome='$cognome' AND telefono='$telefono'")[0];
 		$id_cliente = $cliente['id_cliente'];

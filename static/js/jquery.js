@@ -4012,7 +4012,7 @@
                                                                                                                                         r && r.stop && r.stop.call(this, !0),
                                                                                                                                         e = i.length;
                                                                                                                                         e--;
-
+                                                                                                                                        
                                                                                                                                       )
                                                                                                                                       i[e].elem === this &&
                                                                                                                                       i[e].queue === a &&
@@ -5538,3 +5538,4 @@
                                                                                                                                                             S
                                                                                                                                                           );
                                                                                                                                                         });
+                                                                                                                                                        

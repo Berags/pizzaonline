@@ -106,7 +106,7 @@
       include_once "./classes/DBManager.php";
       include_once "./resolvers/pietanze.php";
       $menu = PietanzeResolver::getMenu();
-
+      
       foreach($menu as $pietanza) {
         ?>
         <div class="px-3 py-3 flex flex-col border border-gray-200 rounded-md h-36 justify-between <?php echo str_replace(' ', '-', $pietanza['tipo']); ?>">
