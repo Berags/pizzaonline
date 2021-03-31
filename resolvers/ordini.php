@@ -13,6 +13,14 @@ class OrdiniResolver {
 		return DBManager::query("SELECT * FROM `ordine`");
 	}
 	
+	static function getNumeroOrdiniPerCliente(int $id_cliente) {
+		return DBManager::query("SELECT COUNT(*) as numero_ordini FROM ordine WHERE id_cliente=$id_cliente");
+	}
+	
+	static function getOrdiniPerCliente(int $id_cliente) {
+		return DBManager::query("SELECT * FROM ordine WHERE id_cliente=$id_cliente");
+	}
+	
 	static function getOrdineById($id) {
 		return DBManager::query("SELECT * FROM `ordine` WHERE id_ordine=$id");
 	}
