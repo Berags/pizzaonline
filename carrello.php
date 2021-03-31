@@ -81,17 +81,17 @@
       </div>
       <div class="mt-5 flex flex-row px-5">
         <a
-        class="px-5 py-1 bg-purple-500 rounded-2xl text-white text-sm font-semibold mr-4" id="Tutto" onclick="mostraTutto()"
+        class="cursor-pointer px-5 py-1 bg-purple-500 rounded-2xl text-white text-sm font-semibold mr-4" id="Tutto" onclick="mostraTutto()"
         >
         Tutto
       </span>
-      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Rossa" onclick="aggiungiAiTipi('Rossa')">
+      <a class="cursor-pointer px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Rossa" onclick="aggiungiAiTipi('Rossa')">
         Rossa
       </a>
-      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Bianca" onclick="aggiungiAiTipi('Bianca')">
+      <a class="cursor-pointer px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Bianca" onclick="aggiungiAiTipi('Bianca')">
         Bianca
       </a>
-      <a class="px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Senza-glutine" onclick="aggiungiAiTipi('Senza-glutine')">
+      <a class="cursor-pointer px-5 py-1 rounded-2xl text-sm font-semibold mr-4" id="Senza-glutine" onclick="aggiungiAiTipi('Senza-glutine')">
         Senza glutine
       </a>
     </div>

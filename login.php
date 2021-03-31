@@ -40,6 +40,7 @@ session_start();
           location.reload();
           </script>
           <?php
+          die();
         }
       }
       ?>

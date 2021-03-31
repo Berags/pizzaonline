@@ -105,7 +105,7 @@ $ordine = OrdiniResolver::getOrdineById(mysqli_real_escape_string(DBManager::get
       </ul>
     </div>
   </div>
-  <a href="../" class="ml-6 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100">Indietro</a>
+  <a href="./lista" class="ml-6 focus:outline-none text-purple-600 text-sm py-2.5 px-5 rounded-md hover:bg-purple-100">Indietro</a>
   <script src="../../static/js/jquery.js"></script>
   <script>
   $("#sidebar").hide();
