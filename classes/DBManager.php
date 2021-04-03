@@ -30,7 +30,7 @@ class DBManager
     if(@mysqli_num_rows($risultato) == 0) {
       //Nessun risultato --> return;
       mysqli_close($con);
-      return;
+      return array();
     }
     
     // Creiamo l'array per il risultato
@@ -81,11 +81,10 @@ class DBManager
     if(@mysqli_num_rows($risultato) == 0) {
       //Nessun risultato --> die();
       mysqli_close($con);
-      return;
+      return array();
     }
     
     // Ultimo id inserito
     return mysqli_insert_id($con);
   }
 }
-?>

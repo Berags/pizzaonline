@@ -13,8 +13,6 @@ const salvaCarrello = (nuovoCarrello) => {
   _localStorage.setItem("carrello", JSON.stringify(nuovoCarrello));
 };
 
-const mostraCarrello = () => {};
-
 const eliminaElemento = (index) => {
   console.log(index);
   let nuovoCarrello = ottieniCarrello();
@@ -32,7 +30,17 @@ const eliminaCarrello = () => {
 
 const aggiungiElementoAlCarrello = (id, quantita, nome, imgpath, prezzo) => {
   const carrello = ottieniCarrello() || [];
-  carrello.push({ id, quantita, nome, imgpath, prezzo });
+  let modificato = false;
+  carrello.forEach((item, i) => {
+    if(item.id == id) {
+      item.quantita++;
+      modificato = true;
+    }
+  });
+  
+  if(!modificato) {
+    carrello.push({ id, quantita, nome, imgpath, prezzo });
+  }
   console.table(carrello);
   _localStorage.setItem("carrello", JSON.stringify(carrello));
   toastr["success"]("Pietanza aggiunta correttamente al carrello!", "Carrello");

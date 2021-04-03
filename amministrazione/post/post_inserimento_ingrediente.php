@@ -13,4 +13,3 @@ $celiachia  = 1;
 IngredientiResolver::inserisciIngredienti($nomeIngrediente, $celiachia);
 echo "<script>window.close();</script>";
 header("location: ../");
-?>

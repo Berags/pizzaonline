@@ -1,20 +1,20 @@
 <?php
 /* Jacopo Beragnoli 5°IC */
 session_start();
-if(!isset($_SESSION["username"])) {
-  header("location: ../");
+if(!isset($_SESSION['username'])) {
+  header('location: ../');
 }
 
-include_once "../../classes/DBManager.php";
-include_once "../../resolvers/pietanze.php";
-include_once "../../resolvers/ingredienti.php";
+include_once '../../classes/DBManager.php';
+include_once '../../resolvers/pietanze.php';
+include_once '../../resolvers/ingredienti.php';
 $dbLink       = DBManager::getConnection();
-$id           = $_POST["id_pietanza"];
-$nomePietanza = mysqli_real_escape_string($dbLink, $_POST["nome_pietanza"]);
-$descrizione  = mysqli_real_escape_string($dbLink, $_POST["descrizione"]);
-$prezzo       = floatval($_POST["prezzo"]);
-$tipo         = mysqli_real_escape_string($dbLink, $_POST["tipo"]);
-$ingredienti  = $_POST["ingredienti"];
+$id           = $_POST['id_pietanza'];
+$nomePietanza = mysqli_real_escape_string($dbLink, $_POST['nome_pietanza']);
+$descrizione  = mysqli_real_escape_string($dbLink, $_POST['descrizione']);
+$prezzo       = floatval($_POST['prezzo']);
+$tipo         = mysqli_real_escape_string($dbLink, $_POST['tipo']);
+$ingredienti  = $_POST['ingredienti'];
 print_r($ingredienti);
 // Rimuoviamo gli elementi doppi negli ingredienti
 $ingredienti = array_filter($ingredienti);
@@ -57,27 +57,27 @@ function uploadFile() {
       $uploadOk = 0;
     }
   }
-
+  
   // Check if file already exists
   if (file_exists($target_file)) {
     unlink($target_file);
     echo "L'immagine esisteva già, è stata quindi rimpiazzata.";
     $uploadOk = 1;
   }
-
+  
   // Check file size
   if ($_FILES["fileToUpload"]["size"] > 5000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
   }
-
+  
   // Allow certain file formats
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
   && $imageFileType != "gif" ) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
   }
-
+  
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
@@ -92,4 +92,3 @@ function uploadFile() {
     }
   }
 }
-?>
