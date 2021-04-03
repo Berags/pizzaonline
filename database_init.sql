@@ -216,48 +216,48 @@ INSERT INTO `ricetta` (`id_pietanza`, `nome`) VALUES
 -- Indici per le tabelle `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`username`);
+ADD PRIMARY KEY (`username`);
 
 --
 -- Indici per le tabelle `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id_cliente`),
-  ADD KEY `username` (`username`);
+ADD PRIMARY KEY (`id_cliente`),
+ADD KEY `username` (`username`);
 
 --
 -- Indici per le tabelle `contiene`
 --
 ALTER TABLE `contiene`
-  ADD PRIMARY KEY (`id_pietanza`,`id_ordine`,`quantita`),
-  ADD KEY `id_ordine` (`id_ordine`);
+ADD PRIMARY KEY (`id_pietanza`,`id_ordine`,`quantita`),
+ADD KEY `id_ordine` (`id_ordine`);
 
 --
 -- Indici per le tabelle `ingrediente`
 --
 ALTER TABLE `ingrediente`
-  ADD PRIMARY KEY (`nome`);
+ADD PRIMARY KEY (`nome`);
 
 --
 -- Indici per le tabelle `ordine`
 --
 ALTER TABLE `ordine`
-  ADD PRIMARY KEY (`id_ordine`),
-  ADD KEY `id_cliente` (`id_cliente`);
+ADD PRIMARY KEY (`id_ordine`),
+ADD KEY `id_cliente` (`id_cliente`);
 
 --
 -- Indici per le tabelle `pietanza`
 --
 ALTER TABLE `pietanza`
-  ADD PRIMARY KEY (`id_pietanza`),
-  ADD KEY `id_pietanza` (`id_pietanza`);
+ADD PRIMARY KEY (`id_pietanza`),
+ADD KEY `id_pietanza` (`id_pietanza`);
 
 --
 -- Indici per le tabelle `ricetta`
 --
 ALTER TABLE `ricetta`
-  ADD PRIMARY KEY (`id_pietanza`,`nome`),
-  ADD KEY `nome` (`nome`);
+ADD PRIMARY KEY (`id_pietanza`,`nome`),
+ADD KEY `nome` (`nome`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -267,12 +267,12 @@ ALTER TABLE `ricetta`
 -- AUTO_INCREMENT per la tabella `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT per la tabella `pietanza`
 --
 ALTER TABLE `pietanza`
-  MODIFY `id_pietanza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+MODIFY `id_pietanza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Limiti per le tabelle scaricate
 --
@@ -281,27 +281,27 @@ ALTER TABLE `pietanza`
 -- Limiti per la tabella `cliente`
 --
 ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`username`) REFERENCES `account` (`username`);
+ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`username`) REFERENCES `account` (`username`);
 
 --
 -- Limiti per la tabella `contiene`
 --
 ALTER TABLE `contiene`
-  ADD CONSTRAINT `contiene_ibfk_1` FOREIGN KEY (`id_pietanza`) REFERENCES `pietanza` (`id_pietanza`),
-  ADD CONSTRAINT `contiene_ibfk_2` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id_ordine`);
+ADD CONSTRAINT `contiene_ibfk_1` FOREIGN KEY (`id_pietanza`) REFERENCES `pietanza` (`id_pietanza`),
+ADD CONSTRAINT `contiene_ibfk_2` FOREIGN KEY (`id_ordine`) REFERENCES `ordine` (`id_ordine`);
 
 --
 -- Limiti per la tabella `ordine`
 --
 ALTER TABLE `ordine`
-  ADD CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
+ADD CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
 
 --
 -- Limiti per la tabella `ricetta`
 --
 ALTER TABLE `ricetta`
-  ADD CONSTRAINT `ricetta_ibfk_1` FOREIGN KEY (`nome`) REFERENCES `ingrediente` (`nome`),
-  ADD CONSTRAINT `ricetta_ibfk_2` FOREIGN KEY (`id_pietanza`) REFERENCES `pietanza` (`id_pietanza`);
+ADD CONSTRAINT `ricetta_ibfk_1` FOREIGN KEY (`nome`) REFERENCES `ingrediente` (`nome`),
+ADD CONSTRAINT `ricetta_ibfk_2` FOREIGN KEY (`id_pietanza`) REFERENCES `pietanza` (`id_pietanza`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
