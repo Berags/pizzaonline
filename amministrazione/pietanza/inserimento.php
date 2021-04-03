@@ -29,7 +29,7 @@
     <div class="flex w-1/3 justify-self-end items-center ml-64">
       <?php
       if(isset($_SESSION['username'])) {
-      require_once '../../classes/SessionManager.php';
+        require_once '../../classes/SessionManager.php';
         echo 'Bentornato, ' . SessionManager::decode($_SESSION['username'])['username'] . '!';
         ?>
         <form action="" method="POST">
@@ -122,7 +122,7 @@
                     </select>
                   </div>
                   <button type="button" onclick="aggiungiIngrediente()">Aggiungi</button>
-
+                  
                 </div>
               </div>
               <input type="file" name="fileToUpload" id="fileToUpload">
