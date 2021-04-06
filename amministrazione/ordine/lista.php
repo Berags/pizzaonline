@@ -66,7 +66,7 @@
       <?php
     }else if(isset($_GET["tipo"])) {
       ?>
-      <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200"><?php echo "LISTA ORDINI GIORNALIERI";
+      <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200"><?php echo "LISTA ORDINI MENSILI";
       ?></h1>
       <?php
     }
