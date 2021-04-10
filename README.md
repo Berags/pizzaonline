@@ -1,6 +1,8 @@
 # Nome Progeto: pizzaonline
 
-Inizio progetoo 03/03/2021
+Inizio progetto 03/03/2021
+
+Fine progetto 03/04/2021
 
 Si vuole realizzare un’applicazione web PHP che consenta di inviare on line gli ordini alla dita Pizza
 Express con consegna a domicilio.
