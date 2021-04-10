@@ -6,9 +6,9 @@
 */
 class DBManager
 {
-  private static $host     = 'mysql1.nuttyabouthosting.co.uk';    // Host dove viene mantenuto il Database
-  private static $username = 'y1352_j.beragnoli';                 // Utente che si collegherà al Database
-  private static $password = '3C8Xj8OWEM84_';                     // Password dell'utente
+  private static $host     = '127.0.0.1';    // Host dove viene mantenuto il Database
+  private static $username = 'root';                 // Utente che si collegherà al Database
+  private static $password = '';                     // Password dell'utente
   private static $dbname   = 'y1352_pizzaonline';                 // Nome del Database
   
   /**
